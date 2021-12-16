@@ -19,28 +19,32 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/cssua.min.js"></script>
     <script src="js/keys.js"></script>
-    <script src="js/tapGame.js"></script>
+    <!-- <script src="js/tapGame.js"></script> -->
     <script src="js/ranking.js"></script>
     <script src="js/MainGame.js"></script>
+    <script>
+      
+    </script>
 </head>
 <body>
     <!-- ゲーム画面 -->
     <div data-role="page" id="list-page">
         <div data-role="header" data-position="fixed" data-theme="c">
             <h1></h1>
-                <!--<a href="#ranking-page" id="ranking" class="ui-btn-right" onclick="toRanking()">ランキングを見る</a>-->
+                <!-- <a href="#ranking-page" id="ranking" class="ui-btn-right" onclick="toRanking()">ランキングを見る</a> -->
         </div>
         <div data-role="content">
             <form name="gameForm">
-                <input type="button" value="ランキングを見る" name="ranking" onclick="toRanking()" />
+                <!-- <input type="button" value="ランキングを見る" name="ranking" onclick="toRanking()" /> -->
                 <center>
                     <h1>連打アプリ</h1>
+                    <canvas width="300" height="300" id="canvas"></canvas>
                 </center>
                 <div align="right">
                     <font size="6"><strong>0</strong></font>
                 </div>
                 <center>
-                    <img src="mato.png" width="250" height="250" alt="mato" onClick="tapCount()"><br/><br/>
+                    <!-- <img src="mato.png" width="250" height="250" alt="mato" onClick="tapCount()"><br/><br/> -->
                     <p>↓スタートボタンを押してゲームスタート↓</p>
                     <input type="button" value="Start" name="start" onclick="startGame()"/>
                 </center>
