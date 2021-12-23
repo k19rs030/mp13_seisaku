@@ -22,8 +22,8 @@ var tapFlag = false;
 // 「Start」ボタン押下時の処理
 function startGame() {
     // ボタンの無効化
-    document.gameForm.start.disabled = true;
-    document.gameForm.ranking.disabled = true;
+    // document.gameForm.start.disabled = true;
+    // document.gameForm.ranking.disabled = true;
     
     // タップカウンターリセット
     this.counter = 0;
