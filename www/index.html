@@ -20,7 +20,6 @@
     <script src="js/cssua.min.js"></script>
     <script src="js/keys.js"></script>
     <script src="js/ranking.js"></script>
-    <script src="js/MainGame.js"></script>
     <script>
     </script>
 </head>
@@ -37,6 +36,7 @@
                 <center>
                     <h1>ゲーム</h1>
                     <canvas width="300" height="300" id="canvas"></canvas>
+                    <script src="js/MainGame.js"></script>
                     <script>
                       Awake();
                     </script>
@@ -47,7 +47,7 @@
                 <center>
                     <!-- <img src="mato.png" width="250" height="250" alt="mato" onClick="tapCount()"><br/><br/> -->
                     <p>↓スタートボタンを押してゲームスタート↓</p>
-                    <input type="button" value="Start" name="start"/>
+                    <input type="button" value="Start" name="start"/ onclick="OnPressedStartButton()">
                 </center>
             </form>
         </div>           
