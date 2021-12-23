@@ -8,6 +8,10 @@ var px=0;
 var ex=0,ey=0;
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
+  var enemy1;
+  var enemy2;
+  var enemy3;
+  
 function OnKeyPressed(e)
 {
   if(e.key=='a')
@@ -27,14 +31,13 @@ function Awake()
   ctx.strokeStyle="black";
   ctx.strokeRect(0,0,299,299);
   // gamePlay=setInterval('update()',100)
-  spawnEnemy();
+  enemy1= new Enemy();
+  enemy2= new Enemy();
+  enemy3= new Enemy();
 }
 function OnPressedStartButton()
 {
   gamePlay=setInterval('update()',100);
-  // spawnEvent=setInterval('spawnEnemy()',1000);
-  spawnEnemy();
-  
 }
 function update()
 {
@@ -42,31 +45,41 @@ function update()
   ctx.fillRect(0,0,300,300);
   ctx.fillStyle="black";
   ctx.fillRect(px,150,30,30);
-  enemy.move();
+  enemy1.move();
+  enemy2.move();
+  enemy3.move();
 }
 class Enemy
 {
-  constructor(x,y)
+  constructor()
   {
+    var moving=false;
     var alive;
-    this.x=x;
-    this.y=y;
-    alive=setInterval(this.move(),100);
+    this.x=getRandomInt(0,270);
+    this.y=0;
   }
   move()
   {
-    this.y+=10;
-    ctx.fillRect(this.x,this.y,30,30);
-    console.log(this.y);
-    if(this.y>300)
+    if(moving)
     {
-      spawnEnemy();
+      this.y+=10;
+      ctx.fillRect(this.x,this.y,30,30);
+      console.log(this.y);
+      if(this.y>300)
+      {
+        this.respawn();
+      } 
     }
+  }
+  respawn()
+  {
+    this.x=getRandomInt(0,270);
+    this.y=0;
   }
 }
 function spawnEnemy()
 {
-  enemy= new Enemy(getRandomInt(0,290),0);
+  
 }
 function getRandomInt(min, max) {
   min = Math.ceil(min);
