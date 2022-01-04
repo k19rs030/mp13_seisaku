@@ -11,6 +11,7 @@ const ctx = canvas.getContext('2d');
 var enemyAlive=false;
 var playerAlive=true;
 var score=0;
+var ncmb = new NCMB(this.APPLICATION_KEY, this.CLIENT_KEY);
   
 function OnKeyPressed(e)
 {
@@ -74,6 +75,7 @@ function update()
       enemyAlive=false;
       score+=100;
     }
+    $("#list-page strong").html(String(this.score));
   }
 }
 function getRandomInt(min, max) {
@@ -93,4 +95,33 @@ function getDistance( x1,y1,x2,y2)
   var pos2 = { x : x2, y : y2 }; 
   var distance = Math.sqrt(Math.pow(pos2.x - pos1.x, 2) + Math.pow(pos2.y - pos1.y, 2));
   return distance;
+}
+
+function saveScore (name, score) {
+    var GameScore=ncmb.DataStore("GameScore");
+    var gameScore=new GameScore();
+    gameScore.set("name",name);  
+    gameScore.set("score",score);
+    gameScore.save()
+    .then(function (result){
+      console.log("保存に成功しました!");
+    })
+    .catch(function(result){
+      console.log("保存に失敗しました");
+    })
+}
+
+function imputName(count){
+    // 入力アラートを表示
+	var name = window.prompt("名前を入力してください", "");
+    if (name == null || name == "") {
+        $("#list-page p").html("保存がキャンセルされました");        
+    } else {
+        // スコアと入力した名前を保存
+        saveScore(name, count);
+        $("#list-page p").html(name + "さんのスコアは" + String(count) + "連打でした"); 
+    }
+    // ボタンの有効化
+    document.gameForm.start.disabled = false;
+    document.gameForm.ranking.disabled = false;
 }
