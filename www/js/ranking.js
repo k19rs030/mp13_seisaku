@@ -24,15 +24,7 @@ function checkRanking() {
     })
     .catch(function(error){
       console.log("error:"+error);
-    })
-    
-    
-    
-    
-    
-    
-    
-    
+    })    
     // ******************************************************
 }
 
@@ -45,7 +37,7 @@ function setData(array) {
         name.innerHTML = array[i].name + "さん";
         // スコアの設定
         var score = table.rows[i].cells[2];
-        score.innerHTML = array[i].score + "連打";
+        score.innerHTML = array[i].score + "点";
     }   
 }
 

@@ -34,7 +34,12 @@ function Awake()
 }
 function OnPressedStartButton()
 {
+  Awake();
+  document.gameForm.start.disabled = true;
+  document.gameForm.ranking.disabled = true;
   gamePlay=setInterval('update()',100);
+  setEnemy();
+  playerAlive=true;
 }
 function update()
 {
@@ -54,7 +59,6 @@ function update()
     ctx.strokeStyle = "black" ;
     ctx.lineWidth = 1 ;
     ctx.stroke() ;
-
     ctx.beginPath();
     ctx.arc( ex, ey, 15, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
     ctx.fillStyle = "rgba(255,0,0,0.8)" ;
@@ -68,7 +72,9 @@ function update()
     if(getDistance(px,200,ex,ey)<15)
     {
       playerAlive=false;
-      alert("DEATH");
+      // alert("DEATH");
+      clearInterval(gamePlay);
+      imputName(score);
     }
     if(ey>290)
     {
@@ -119,7 +125,7 @@ function imputName(count){
     } else {
         // スコアと入力した名前を保存
         saveScore(name, count);
-        $("#list-page p").html(name + "さんのスコアは" + String(count) + "連打でした"); 
+        $("#list-page p").html(name + "さんのスコアは" + String(count) + "でした"); 
     }
     // ボタンの有効化
     document.gameForm.start.disabled = false;
